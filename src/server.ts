@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as mongoose from 'mongoose';
 import { getEnvironmentVariable } from './environments/env';
+import * as UserRouter from './routers/UserRouter';
 
 export class Server{
     public app: express.Application = express();
@@ -38,5 +39,5 @@ function setConfigurations() {
 
 
 function setRoutes() {
-    throw new Error('Function not implemented.');
+    this.app.use('/api/user', UserRouter);
 }
