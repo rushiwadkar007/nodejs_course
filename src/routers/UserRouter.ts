@@ -13,9 +13,12 @@ import { Router } from "express";
     }
 
     getRoutes(){
-        this.router.get('/login', (req, res)=>{
-            res.send('we are here to login')
-        })
+        this.router.get('/login', (req, res, next)=>{
+            (req as any).message = 'we are here to login!';
+            next();
+        },(req, res)=>{
+            res.send((req as any).message);
+        });
     }
 
     postRoutes(){
