@@ -1,21 +1,23 @@
+import bodyParser = require('body-parser');
 import * as express from 'express';
 import * as mongoose from 'mongoose';
 import { getEnvironmentVariable } from './environments/env';
 import UserRouter from './routers/UserRouter';
 
 export class Server{
+
     public app: express.Application = express();
 
     constructor(){
         this.setConfigurations();
         this.setRoutes();
         this.error404Handler();
-        this.handleErrors();
-        
+        this.handleErrors();     
     }
 
     setConfigurations(){
         this.connectMongodb();
+        this.configureBodyParser();
     }
 
     connectMongodb(){
@@ -24,6 +26,10 @@ export class Server{
                 console.log('mongodb is connected!');
             }
         );
+    }
+
+    configureBodyParser(){
+        this.app.use(bodyParser.urlencoded({extended: true}));
     }
 
      setRoutes() {
@@ -48,6 +54,8 @@ export class Server{
             })
         })
     }
+
+
 }
 
 

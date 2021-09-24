@@ -14,11 +14,11 @@ import { UserController } from "../controllers/UserController";
     }
 
     getRoutes(){
-        this.router.get('/login', UserController.login, UserController.test);
+        
     }
 
     postRoutes(){
-
+        this.router.post('/login', UserController.login, UserController.test);
     }
 
     patchRoutes(){
