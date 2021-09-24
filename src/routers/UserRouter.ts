@@ -18,7 +18,7 @@ import { UserController } from "../controllers/UserController";
     }
 
     postRoutes(){
-        this.router.post('/login', UserController.login, UserController.test);
+        this.router.post('/login', UserController.login);
     }
 
     patchRoutes(){
