@@ -14,7 +14,7 @@ import { UserController } from "../controllers/UserController";
     }
 
     getRoutes(){
-        this.router.get('/login', UserController.login);
+        this.router.get('/login', UserController.login, UserController.test);
     }
 
     postRoutes(){
