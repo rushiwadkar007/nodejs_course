@@ -1,32 +1,41 @@
 import { Router } from "express";
+
 import { UserController } from "../controllers/UserController";
-import {body} from 'express-validator';
+
+import { body } from 'express-validator';
+
 import { UserValidators } from "../validators/UserValidators";
- class UserRouter{
+
+class UserRouter {
+
     public router; Router;
 
-    constructor(){
+    constructor() {
+
         this.router = Router();
 
         this.getRoutes();
+
         this.postRoutes();
+
         this.patchRoutes();
+
         this.deleteRoutes();
     }
 
-    getRoutes(){
-        
-    }
-
-    postRoutes(){
-        this.router.post('/signup',UserValidators.signup(), UserController.signup);
-    }
-
-    patchRoutes(){
+    getRoutes() {
 
     }
 
-    deleteRoutes(){
+    postRoutes() {
+        this.router.post('/signup', UserValidators.signup(), UserController.signup);
+    }
+
+    patchRoutes() {
+
+    }
+
+    deleteRoutes() {
 
     }
 }

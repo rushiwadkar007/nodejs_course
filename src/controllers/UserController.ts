@@ -6,7 +6,7 @@ import { validationResult } from 'express-validator';
 
 export class UserController {
 
-    static signup(req, res, next) {
+    static async signup(req, res, next) {
 
         const error = validationResult(req);
 
@@ -19,6 +19,8 @@ export class UserController {
         if (!error.isEmpty()) {
 
             next(new Error(error.array()[0].msg));
+        
+            return
 
         }
 
@@ -31,17 +33,30 @@ export class UserController {
             userName: userName
         }
 
-        let user = new User(data);
+        
 
-        user.save().then((user) => {
+        // user.save().then((user) => {
+
+        //     res.send(user);
+
+        //     return;
+
+        // }).catch((err) => {
+
+        //     next(err);
+
+        //     return;
+
+        // });
+
+        try{
+            let user = await new User(data).save();
 
             res.send(user);
-
-        }).catch((err) => {
-
-            res.send(err);
-
-        });
+        }
+        catch(e){
+            next(e);
+        }
 
     }
 
