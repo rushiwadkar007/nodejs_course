@@ -10,6 +10,12 @@ const userSchema = new mongoose.Schema({
 
     userName: {type: String, required: true},
 
+    verified: {type: Boolean, required: true, default: false},
+
+    verification_token: {type: Number, required: true},
+
+    verification_token_time: {type: Date, required: true},
+
     created_at: {type: Date, required: true, default:new Date()},
 
     updated_at: {type: Date, required: true, default: new Date()}
